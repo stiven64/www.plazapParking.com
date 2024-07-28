@@ -1,4 +1,5 @@
 <?php
+// Incluye el archivo de configuración y el archivo de datos de la sesión del usuario administrador
 include('../app/config.php');
 include('../layout/admin/datos_usuario_sesion.php');
 ?>
@@ -7,6 +8,7 @@ include('../layout/admin/datos_usuario_sesion.php');
 <head>
     <?php include('../layout/admin/head.php'); ?>
 </head>
+ <!-- Incluye el archivo de cabecera -->
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
     <?php include('../layout/admin/menu.php'); ?>
@@ -38,6 +40,7 @@ include('../layout/admin/datos_usuario_sesion.php');
                         </div>
 
                         <?php
+                        // Obtiene el ID del cliente de la URL
                         $id_cliente_get = $_GET['id'];
                         $query_clientes = $pdo->prepare("SELECT * FROM tb_clientes WHERE id_cliente = '$id_cliente_get' AND estado = '1'  ");
                         $query_clientes->execute();
@@ -88,6 +91,7 @@ include('../layout/admin/datos_usuario_sesion.php');
 
 
                                 <div id="respuesta">
+                          <!-- Aquí se mostrará la respuesta de la actualización -->
 
                                 </div>
 
@@ -106,20 +110,25 @@ include('../layout/admin/datos_usuario_sesion.php');
 
     </div>
     <!-- /.content-wrapper -->
+        <!-- Incluye el pie de página de la interfaz de administración -->
     <?php include('../layout/admin/footer.php'); ?>
 </div>
+<!-- Incluye los enlaces a los scripts del pie de página -->
 <?php include('../layout/admin/footer_link.php'); ?>
 </body>
 </html>
 
 
 <script>
+     // Script para manejar el evento de clic del botón de actualización del cliente
     $('#btn_actualizar_cliente').click(function () {
 
         var nombre_cliente = $('#nombre_cliente').val();
         var nit_ci_cliente = $('#nit_ci_cliente').val();
         var placa_auto = $('#placa_auto').val();
         var id_cliente = "<?php echo $id_cliente_get;?>";
+        
+        // Validación de los campos del formulario
 
         if(nombre_cliente == ""){
             alert('Debe de llenar el campo nombre del cliente');

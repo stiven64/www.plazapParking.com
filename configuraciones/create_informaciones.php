@@ -1,14 +1,19 @@
 <?php
+// Incluye el archivo de configuración para conectar con la base de datos y otras configuraciones
 include('../app/config.php');
+
+// Incluye el archivo que contiene la información de la sesión del usuario administrador
 include('../layout/admin/datos_usuario_sesion.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Incluye el archivo de cabecera con las configuraciones y enlaces necesarios -->
     <?php include('../layout/admin/head.php'); ?>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
+    <!-- Incluye el menú de la interfaz de administración -->
     <?php include('../layout/admin/menu.php'); ?>
     <div class="content-wrapper">
         <br>
@@ -16,8 +21,8 @@ include('../layout/admin/datos_usuario_sesion.php');
         <div class="col-md-12">
             <div class="alert alert-secondary" role="alert">
             <center><h2>Creación de una nueva información</h2></center>
-</div>
             </div>
+        </div>
         </div>
            
 
@@ -28,6 +33,7 @@ include('../layout/admin/datos_usuario_sesion.php');
                     <div class="card card-outline card-primary">
                         <div class="card-header">
                             <div class="card-tools">
+                                <!-- Botón para colapsar el contenido de la tarjeta -->
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
                                 </button>
@@ -92,7 +98,7 @@ include('../layout/admin/datos_usuario_sesion.php');
                             </div>
 
                             <div id="respuesta">
-
+                                <!-- Aquí se mostrará la respuesta del servidor -->
                             </div>
 
 
@@ -109,52 +115,57 @@ include('../layout/admin/datos_usuario_sesion.php');
 
     </div>
     <!-- /.content-wrapper -->
+    <!-- Incluye el pie de página de la interfaz de administración -->
     <?php include('../layout/admin/footer.php'); ?>
 </div>
+<!-- Incluye los enlaces a los scripts del pie de página -->
 <?php include('../layout/admin/footer_link.php'); ?>
 </body>
 </html>
 
 
 <script>
-    $('#btn_registrar_informacion').click(function () {
+// Maneja el evento de clic del botón para registrar la información
+$('#btn_registrar_informacion').click(function () {
 
-       var nombre_parqueo = $('#nombre_parqueo').val();
-       var actividad_empresa = $('#actividad_empresa').val();
-       var sucursal = $('#sucursal').val();
-       var direccion = $('#direccion').val();
-       var zona = $('#zona').val();
-       var telefono = $('#telefono').val();
-       var departamento_ciudad = $('#departamento_ciudad').val();
-       var pais = $('#pais').val();
+   var nombre_parqueo = $('#nombre_parqueo').val();
+   var actividad_empresa = $('#actividad_empresa').val();
+   var sucursal = $('#sucursal').val();
+   var direccion = $('#direccion').val();
+   var zona = $('#zona').val();
+   var telefono = $('#telefono').val();
+   var departamento_ciudad = $('#departamento_ciudad').val();
+   var pais = $('#pais').val();
 
-        if(nombre_parqueo == ""){
-            alert('Debe de llenar el campo nombre del parqueo');
-            $('#nombre_parqueo').focus();
-        }else if(actividad_empresa == ""){
-            alert('Debe de llenar el campo actividad de la empresa');
-            $('#actividad_empresa').focus();
-        }else if(sucursal == ""){
-            alert('Debe de llenar el campo sucursal');
-            $('#sucursal').focus();
-        }else if(direccion == ""){
-            alert('Debe de llenar el campo dirección');
-            $('#direccion').focus();
-        }else if(zona == ""){
-            alert('Debe de llenar el campo zona');
-            $('#zona').focus();
-        }else if(telefono == ""){
-            alert('Debe de llenar el campo telefono');
-            $('#telefono').focus();
-        }else if(departamento_ciudad == ""){
-            alert('Debe de llenar el campo departamento o ciudad');
-            $('#departamento_ciudad').focus();
-        }else if(pais == ""){
-            alert('Debe de llenar el campo país');
-            $('#pais').focus();
-        }else{
+    // Validación de los campos del formulario
+    if(nombre_parqueo == ""){
+        alert('Debe de llenar el campo nombre del parqueo');
+        $('#nombre_parqueo').focus();
+    }else if(actividad_empresa == ""){
+        alert('Debe de llenar el campo actividad de la empresa');
+        $('#actividad_empresa').focus();
+    }else if(sucursal == ""){
+        alert('Debe de llenar el campo sucursal');
+        $('#sucursal').focus();
+    }else if(direccion == ""){
+        alert('Debe de llenar el campo dirección');
+        $('#direccion').focus();
+    }else if(zona == ""){
+        alert('Debe de llenar el campo zona');
+        $('#zona').focus();
+    }else if(telefono == ""){
+        alert('Debe de llenar el campo telefono');
+        $('#telefono').focus();
+    }else if(departamento_ciudad == ""){
+        alert('Debe de llenar el campo departamento o ciudad');
+        $('#departamento_ciudad').focus();
+    }else if(pais == ""){
+        alert('Debe de llenar el campo país');
+        $('#pais').focus();
+    }else{
             //alert("esta listo para el controlador");
             var url = 'controller_create_informaciones.php';
+            // Envía los datos al servidor usando una solicitud GET
             $.get(url,{nombre_parqueo:nombre_parqueo,actividad_empresa:actividad_empresa,sucursal:sucursal,direccion:direccion,zona:zona,telefono:telefono,departamento_ciudad:departamento_ciudad,pais:pais},function (datos) {
                 $('#respuesta').html(datos);
             });
