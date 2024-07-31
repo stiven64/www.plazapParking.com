@@ -36,7 +36,7 @@ foreach($facturas as $factura){
     $fecha_salida = $factura['fecha_salida'];
     $hora_salida = $factura['hora_salida'];
     $tiempo = $factura['tiempo'];
-    $cubiculo = $factura['cubiculo'];
+    $cuviculo = $factura['cuviculo'];
     $detalle = $factura['detalle'];
     $precio = $factura['precio'];
     $cantidad = $factura['cantidad'];

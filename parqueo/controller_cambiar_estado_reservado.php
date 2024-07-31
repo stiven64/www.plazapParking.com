@@ -3,8 +3,8 @@
 // Incluye el archivo de configuración
 include('../app/config.php');
 
-// Obtiene el parámetro 'cubiculo' de la URL
-$cubiculo = $_GET['cubiculo'];
+// Obtiene el parámetro 'cuviculo' de la URL
+$cuviculo = $_GET['cuviculo'];
 // Define el estado del espacio como "RESERVADO"
 $estado_espacio = "RESERVADO";
 
@@ -22,7 +22,7 @@ WHERE id_map = :id_map");
 // Asocia los parámetros con los valores correspondientes
 $sentencia->bindParam(':estado_espacio', $estado_espacio);
 $sentencia->bindParam(':fyh_actualizacion', $fechaHora);
-$sentencia->bindParam(':id_map', $cubiculo);
+$sentencia->bindParam(':id_map', $cuviculo);
 
 // Ejecuta la sentencia
 if($sentencia->execute()){
