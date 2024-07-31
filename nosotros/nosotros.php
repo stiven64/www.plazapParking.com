@@ -105,10 +105,10 @@
             <div class="row">
                 <div class="col text-center">
                     <h2 class="mb-4">Nuestro Equipo</h2>
-                    <p>Administrador: stiven martinez 2022-0275
+                    <p>Administrador: Stiven Martinez Sosa (2022-0275)
                     
                     </p>
-                    <p>Administrador:Bianny michel 
+                    <p>Administrador: Bianny Michelle Peña Rosario (2022-0443)
                     </p>
                 </div>
             </div>
