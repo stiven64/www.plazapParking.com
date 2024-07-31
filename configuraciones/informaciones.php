@@ -1,14 +1,19 @@
 <?php
+// Incluye el archivo de configuración
 include('../app/config.php');
+
+// Incluye el archivo con los datos del usuario en sesión
 include('../layout/admin/datos_usuario_sesion.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Incluye el archivo head -->
     <?php include('../layout/admin/head.php'); ?>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
+    <!-- Incluye el menú -->
     <?php include('../layout/admin/menu.php'); ?>
     <div class="content-wrapper">
         <br>
@@ -24,6 +29,7 @@ include('../layout/admin/datos_usuario_sesion.php');
 
             <br>
             <script>
+                // Inicializa DataTables con configuración personalizada
                 $(document).ready(function() {
                     $('#table_id').DataTable( {
                         "pageLength": 5,
@@ -50,6 +56,7 @@ include('../layout/admin/datos_usuario_sesion.php');
                 } );
             </script>
 
+            <!-- Enlace para registrar nueva información -->
             <a href="create_informaciones.php" class="btn btn-primary">Registrar nuevo</a> <br><br>
             <table id="table_id" class="table table-bordered table-sm table-striped">
                 <thead>
@@ -66,10 +73,15 @@ include('../layout/admin/datos_usuario_sesion.php');
                 </thead>
                 <tbody>
                 <?php
+                // Inicializa el contador
                 $contador = 0;
+
+                // Prepara y ejecuta la consulta para obtener las informaciones
                 $query_informacions = $pdo->prepare("SELECT * FROM tb_informaciones WHERE estado = '1' ");
                 $query_informacions->execute();
                 $informacions = $query_informacions->fetchAll(PDO::FETCH_ASSOC);
+
+                // Itera sobre las informaciones obtenidas
                 foreach($informacions as $informacion){
                     $id_informacion = $informacion['id_informacion'];
                     $nombre_parqueo = $informacion['nombre_parqueo'];
@@ -80,6 +92,8 @@ include('../layout/admin/datos_usuario_sesion.php');
                     $telefono = $informacion['telefono'];
                     $departamento_ciudad = $informacion['departamento_ciudad'];
                     $pais = $informacion['pais'];
+
+                    // Incrementa el contador
                     $contador = $contador + 1;
                     ?>
                     <tr>
@@ -94,6 +108,7 @@ include('../layout/admin/datos_usuario_sesion.php');
                         <td><?php echo $pais;?></td>
                         <td>
                             <center>
+                                <!-- Enlaces para editar y borrar información -->
                                 <a href="update_configuraciones.php?id=<?php echo $id_informacion; ?>" class="btn btn-success">Editar</a>
                                 <a href="delete_configuraciones.php?id=<?php echo $id_informacion; ?>" class="btn btn-danger">Borrar</a>
                             </center>
@@ -106,6 +121,7 @@ include('../layout/admin/datos_usuario_sesion.php');
             </table>
 
             <hr>
+            <!-- Enlace para generar reporte -->
             <a href="generar-reporte.php" class="btn btn-primary">Generar reporte
                 <i class="fa fa">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-bar-graph" viewBox="0 0 16 16">
@@ -121,8 +137,10 @@ include('../layout/admin/datos_usuario_sesion.php');
 
     </div>
     <!-- /.content-wrapper -->
+    <!-- Incluye el archivo footer -->
     <?php include('../layout/admin/footer.php'); ?>
 </div>
+<!-- Incluye el archivo footer_link -->
 <?php include('../layout/admin/footer_link.php'); ?>
 </body>
 </html>

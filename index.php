@@ -62,7 +62,7 @@
                 <div class="col">
                     <center>
                         <h2><?php echo $nro_espacio;?></h2>
-                        <button class="btn btn-success" style="width: 100%;height: 114px">
+                        <button class="btn btn-dark" style="width: 100%;height: 114px">
                             <p><?php echo $estado_espacio;?></p>
                             
                         </button>
@@ -74,7 +74,7 @@
                 <div class="col">
                     <center>
                         <h2><?php echo $nro_espacio;?></h2>
-                        <button class="btn btn-info">
+                        <button class="btn btn-primary">
                             <img src="<?php echo $URL;?>/public/imagenes/auto1.png" width="60px" alt="">
                         </button>
                         <p><?php echo $estado_espacio;?></p>
@@ -86,7 +86,7 @@
                 <div class="col">
                     <center>
                         <h2><?php echo $nro_espacio;?></h2>
-                        <button class="btn btn-info">
+                        <button class="btn btn-info-primary">
                             <img src="<?php echo $URL;?>/public/imagenes/carro.png" width="54px" alt="">
                         </button>
                         <p><?php echo $estado_espacio;?></p>

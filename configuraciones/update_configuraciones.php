@@ -1,14 +1,19 @@
 <?php
+// Incluye el archivo de configuración
 include('../app/config.php');
+
+// Incluye el archivo con los datos del usuario en sesión
 include('../layout/admin/datos_usuario_sesion.php');
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Incluye el archivo head -->
     <?php include('../layout/admin/head.php'); ?>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
+    <!-- Incluye el menú -->
     <?php include('../layout/admin/menu.php'); ?>
     <div class="content-wrapper">
         <br>
@@ -32,10 +37,15 @@ include('../layout/admin/datos_usuario_sesion.php');
                         </div>
 
                         <?php
+                        // Obtiene el id de la información de la URL
                         $id_informacion_get = $_GET['id'];
+
+                        // Prepara y ejecuta la consulta para obtener la información específica
                         $query_informacions = $pdo->prepare("SELECT * FROM tb_informaciones WHERE estado = '1' AND id_informacion = '$id_informacion_get' ");
                         $query_informacions->execute();
                         $informacions = $query_informacions->fetchAll(PDO::FETCH_ASSOC);
+
+                        // Itera sobre las informaciones obtenidas
                         foreach($informacions as $informacion){
                             $id_informacion = $informacion['id_informacion'];
                             $nombre_parqueo = $informacion['nombre_parqueo'];
@@ -96,9 +106,11 @@ include('../layout/admin/datos_usuario_sesion.php');
 
                             <div class="row">
                                 <div class="col-md-6">
+                                    <!-- Enlace para cancelar la actualización -->
                                     <a href="informaciones.php" class="btn btn-default btn-block">Cancelar</a>
                                 </div>
                                 <div class="col-md-6">
+                                    <!-- Botón para actualizar la información -->
                                     <button class="btn btn-success btn-block" id="btn_actualizar_informacion">
                                         Actualizar
                                     </button>
@@ -123,16 +135,20 @@ include('../layout/admin/datos_usuario_sesion.php');
 
     </div>
     <!-- /.content-wrapper -->
+    <!-- Incluye el archivo footer -->
     <?php include('../layout/admin/footer.php'); ?>
 </div>
+<!-- Incluye el archivo footer_link -->
 <?php include('../layout/admin/footer_link.php'); ?>
 </body>
 </html>
 
 
 <script>
+    // Función para manejar el clic en el botón de actualizar información
     $('#btn_actualizar_informacion').click(function () {
 
+        // Obtiene los valores de los campos del formulario
         var nombre_parqueo = $('#nombre_parqueo').val();
         var actividad_empresa = $('#actividad_empresa').val();
         var sucursal = $('#sucursal').val();
@@ -143,6 +159,7 @@ include('../layout/admin/datos_usuario_sesion.php');
         var pais = $('#pais').val();
         var id_informacion = '<?php echo $id_informacion_get; ?>';
 
+        // Validación de campos obligatorios
         if(nombre_parqueo == ""){
             alert('Debe de llenar el campo nombre del parqueo');
             $('#nombre_parqueo').focus();
@@ -168,7 +185,7 @@ include('../layout/admin/datos_usuario_sesion.php');
             alert('Debe de llenar el campo país');
             $('#pais').focus();
         }else{
-            //alert("esta listo para el controlador");
+            // Si todos los campos están completos, realiza una solicitud AJAX
             var url = 'controller_update_informaciones.php';
             $.get(url,{nombre_parqueo:nombre_parqueo,actividad_empresa:actividad_empresa,sucursal:sucursal,direccion:direccion,zona:zona,telefono:telefono,departamento_ciudad:departamento_ciudad,pais:pais,id_informacion:id_informacion},function (datos) {
                 $('#respuesta').html(datos);

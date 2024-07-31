@@ -81,7 +81,7 @@ $contador_del_nro_de_factura = $contador_del_nro_de_factura +1;
                                                 <center>
                                                     <h2><?php echo $nro_espacio;?></h2>
 
-                                                    <button class="btn btn-success" style="width: 100%;height: 114px"
+                                                    <button class="btn btn-dark" style="width: 100%;height: 114px"
                                                             data-toggle="modal" data-target="#modal<?php echo $id_map;?>">
                                                         <p><?php echo $estado_espacio;?></p>
                                                     </button>
