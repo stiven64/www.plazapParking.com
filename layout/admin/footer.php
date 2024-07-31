@@ -5,5 +5,5 @@
       
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2024-2030 <a href=""></a>.</strong> stiven martinez 2022-0275, Bianny michel peña
+    <strong>Copyright &copy;<a href="">Stiven Martinez (2022-0275), Bianny Michelle Peña (2022-0443)</a></strong> 
 </footer>
