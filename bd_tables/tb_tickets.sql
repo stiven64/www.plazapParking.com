@@ -5,7 +5,7 @@ CREATE TABLE tb_tickets(
     nombre_cliente          VARCHAR (255) NULL,
     nit_ci                  VARCHAR (255) NULL,
     placa_auto             VARCHAR (255) NULL,
-    cuviculo                VARCHAR (255) NULL,
+    cubiculo                VARCHAR (255) NULL,
     fecha_ingreso           VARCHAR (255) NULL,
     hora_ingreso            VARCHAR (255) NULL,
     estado_ticket            VARCHAR (255) NULL,

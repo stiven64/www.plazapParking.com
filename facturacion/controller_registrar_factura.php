@@ -86,8 +86,8 @@ $diff = $fecha_hora_ingreso ->diff($fecha_hora_salida);
 $tiempo = $diff->days." días con ".$diff->h." horas con ".$diff->i." minutos ";
 //////////////////// CALCULA LA DIFERENCIA ENTRE EL TIEMPO DE ENTRADA Y DE SALIDA /////////////////////////////
 
-// Obtener el parámetro de la URL: cuviculo
-$cuviculo = $_GET['cuviculo'];
+// Obtener el parámetro de la URL: cubiculo
+$cuviculo = $_GET['cubiculo'];
 
 // Detalle del servicio
 $detalle = "Servicio de parqueo de ".$tiempo;
@@ -156,8 +156,8 @@ $qr = "Factura realizada por el sistema de parqueo, al cliente ".$nombre_cliente
 
 // Preparar la sentencia SQL para insertar los datos de la factura en la tabla tb_facturaciones
 $sentencia = $pdo->prepare('INSERT INTO tb_facturaciones
-(id_informacion,nro_factura,id_cliente,fecha_factura,fecha_ingreso,hora_ingreso,fecha_salida,hora_salida,tiempo,cuviculo,detalle,precio,cantidad,total,monto_total,monto_literal,user_sesion,qr, fyh_creacion, estado)
-VALUES ( :id_informacion,:nro_factura,:id_cliente,:fecha_factura,:fecha_ingreso,:hora_ingreso,:fecha_salida,:hora_salida,:tiempo,:cuviculo,:detalle,:precio,:cantidad,:total,:monto_total,:monto_literal,:user_sesion,:qr,:fyh_creacion,:estado)');
+(id_informacion,nro_factura,id_cliente,fecha_factura,fecha_ingreso,hora_ingreso,fecha_salida,hora_salida,tiempo,cubiculo,detalle,precio,cantidad,total,monto_total,monto_literal,user_sesion,qr, fyh_creacion, estado)
+VALUES ( :id_informacion,:nro_factura,:id_cliente,:fecha_factura,:fecha_ingreso,:hora_ingreso,:fecha_salida,:hora_salida,:tiempo,:cubiculo,:detalle,:precio,:cantidad,:total,:monto_total,:monto_literal,:user_sesion,:qr,:fyh_creacion,:estado)');
 
 // Enlazar los parámetros de la sentencia SQL con las variables correspondientes
 $sentencia->bindParam(':id_informacion',$id_informacion);
@@ -169,7 +169,7 @@ $sentencia->bindParam(':hora_ingreso',$hora_ingreso);
 $sentencia->bindParam(':fecha_salida',$fecha_salida);
 $sentencia->bindParam(':hora_salida',$hora_salida);
 $sentencia->bindParam(':tiempo',$tiempo);
-$sentencia->bindParam(':cuviculo',$cuviculo);
+$sentencia->bindParam(':cubiculo',$cubiculo);
 $sentencia->bindParam(':detalle',$detalle);
 $sentencia->bindParam(':precio',$precio_final);
 $sentencia->bindParam(':cantidad',$cantidad);
@@ -196,7 +196,7 @@ if($sentencia->execute()){
     WHERE nro_espacio = :nro_espacio");
     $sentencia->bindParam(':estado_espacio',$estado_espacio);
     $sentencia->bindParam(':fyh_actualizacion',$fechaHora);
-    $sentencia->bindParam(':nro_espacio',$cuviculo);
+    $sentencia->bindParam(':nro_espacio',$cubiculo);
     $sentencia->execute();
 
 

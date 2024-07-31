@@ -164,7 +164,7 @@ $contador_del_nro_de_factura = $contador_del_nro_de_factura +1;
                                                                     <div class="form-group row">
                                                                         <label for="staticEmail" class="col-sm-4 col-form-label">Cuvículo:</label>
                                                                         <div class="col-sm-8">
-                                                                            <input type="text" class="form-control" id="cuviculo<?php echo $id_map;?>" value="<?php echo $nro_espacio; ?>">
+                                                                            <input type="text" class="form-control" id="cubiculo<?php echo $id_map;?>" value="<?php echo $nro_espacio; ?>">
                                                                         </div>
                                                                     </div>
 
@@ -180,7 +180,7 @@ $contador_del_nro_de_factura = $contador_del_nro_de_factura +1;
                                                                            var nit_ci = $('#nit_ci<?php echo $id_map;?>').val();
                                                                            var fecha_ingreso = $('#fecha_ingreso<?php echo $id_map;?>').val();
                                                                            var hora_ingreso = $('#hora_ingreso<?php echo $id_map;?>').val();
-                                                                           var cuviculo = $('#cuviculo<?php echo $id_map;?>').val();
+                                                                           var cubiculo = $('#cubiculo<?php echo $id_map;?>').val();
                                                                            var user_session = "<?php echo $usuario_sesion; ?>";
 
 
@@ -197,7 +197,7 @@ $contador_del_nro_de_factura = $contador_del_nro_de_factura +1;
                                                                            else{
 
                                                                                var url_1 = 'parqueo/controller_cambiar_estado_ocupado.php';
-                                                                               $.get(url_1,{cuviculo:cuviculo},function (datos) {
+                                                                               $.get(url_1,{cubiculo:cubiculo},function (datos) {
                                                                                    $('#respuesta_ticket').html(datos);
                                                                                });
 
@@ -207,7 +207,7 @@ $contador_del_nro_de_factura = $contador_del_nro_de_factura +1;
                                                                                });
 
                                                                                var url_3 = 'tickets/controller_registrar_ticket.php';
-                                                                               $.get(url_3,{placa:placa,nombre_cliente:nombre_cliente,nit_ci:nit_ci,fecha_ingreso:fecha_ingreso,hora_ingreso:hora_ingreso,cuviculo:cuviculo,user_session:user_session},function (datos) {
+                                                                               $.get(url_3,{placa:placa,nombre_cliente:nombre_cliente,nit_ci:nit_ci,fecha_ingreso:fecha_ingreso,hora_ingreso:hora_ingreso,cubiculo:cubiculo,user_session:user_session},function (datos) {
                                                                                    $('#respuesta_ticket').html(datos);
                                                                                });
 
@@ -225,7 +225,7 @@ $contador_del_nro_de_factura = $contador_del_nro_de_factura +1;
                                                                            var nit_ci = $('#nit_ci<?php echo $id_map;?>').val();
                                                                            var fecha_ingreso = $('#fecha_ingreso<?php echo $id_map;?>').val();
                                                                            var hora_ingreso = $('#hora_ingreso<?php echo $id_map;?>').val();
-                                                                           var cuviculo = $('#cuviculo<?php echo $id_map;?>').val();
+                                                                           var cubiculo = $('#cubiculo<?php echo $id_map;?>').val();
                                                                            var user_session = "<?php echo $usuario_sesion; ?>";
 
 
@@ -242,7 +242,7 @@ $contador_del_nro_de_factura = $contador_del_nro_de_factura +1;
                                                                            else{
 
                                                                                var url_1 = 'parqueo/controller_cambiar_estado_reservado.php';
-                                                                               $.get(url_1,{cuviculo:cuviculo},function (datos) {
+                                                                               $.get(url_1,{cubiculo:cubiculo},function (datos) {
                                                                                    $('#respuesta_ticket').html(datos);
                                                                                });
 
@@ -252,7 +252,7 @@ $contador_del_nro_de_factura = $contador_del_nro_de_factura +1;
                                                                                });
 
                                                                                var url_3 = 'tickets/controller_registrar_ticket.php';
-                                                                               $.get(url_3,{placa:placa,nombre_cliente:nombre_cliente,nit_ci:nit_ci,fecha_ingreso:fecha_ingreso,hora_ingreso:hora_ingreso,cuviculo:cuviculo,user_session:user_session},function (datos) {
+                                                                               $.get(url_3,{placa:placa,nombre_cliente:nombre_cliente,nit_ci:nit_ci,fecha_ingreso:fecha_ingreso,hora_ingreso:hora_ingreso,cubiculo:cubiculo,user_session:user_session},function (datos) {
                                                                                    $('#respuesta_ticket').html(datos);
                                                                                });
                                                                                
@@ -287,7 +287,7 @@ $contador_del_nro_de_factura = $contador_del_nro_de_factura +1;
 
                                                     <?php
 
-                                                    $query_datos_cliente = $pdo->prepare("SELECT * FROM tb_tickets WHERE cuviculo = '$nro_espacio' AND estado = '1' ");
+                                                    $query_datos_cliente = $pdo->prepare("SELECT * FROM tb_tickets WHERE cubiculo = '$nro_espacio' AND estado = '1' ");
                                                     $query_datos_cliente->execute();
                                                     $datos_clientes = $query_datos_cliente->fetchAll(PDO::FETCH_ASSOC);
                                                     foreach($datos_clientes as $datos_cliente){
@@ -295,7 +295,7 @@ $contador_del_nro_de_factura = $contador_del_nro_de_factura +1;
                                                         $placa_auto = $datos_cliente['placa_auto'];
                                                         $nombre_cliente = $datos_cliente['nombre_cliente'];
                                                         $nit_ci = $datos_cliente['nit_ci'];
-                                                        $cuviculo = $datos_cliente['cuviculo'];
+                                                        $cubiculo = $datos_cliente['cubiculo'];
                                                         $fecha_ingreso = $datos_cliente['fecha_ingreso'];
                                                         $hora_ingreso = $datos_cliente['hora_ingreso'];
                                                         $user_sesion = $datos_cliente['user_sesion'];
@@ -351,14 +351,14 @@ $contador_del_nro_de_factura = $contador_del_nro_de_factura +1;
                                                                     <div class="form-group row">
                                                                         <label for="staticEmail" class="col-sm-4 col-form-label">Cuvículo:</label>
                                                                         <div class="col-sm-8">
-                                                                            <input type="text" class="form-control" value="<?php echo $cuviculo;?>" id="cuviculo<?php echo $id_map;?>" disabled>
+                                                                            <input type="text" class="form-control" value="<?php echo $cubiculo;?>" id="cubiculo<?php echo $id_map;?>" disabled>
                                                                         </div>
                                                                     </div>
 
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
-                                                                    <a href="tickets/controller_cancelar_ticket.php?id=<?php echo $id_ticket;?>&&cuviculo=<?php echo $cuviculo;?>" class="btn btn-danger">Cancelar ticket</a>
+                                                                    <a href="tickets/controller_cancelar_ticket.php?id=<?php echo $id_ticket;?>&&cubiculo=<?php echo $cubiculo;?>" class="btn btn-danger">Cancelar ticket</a>
                                                                     <a href="tickets/reimprimir_ticket.php?id=<?php echo $id_ticket;?>" class="btn btn-primary">Volver a Imprimir</a>
                                                                     <button type="button" class="btn btn-success" id="btn_facturar<?php echo $id_map;?>">Facturar</button>
                                                                     <?php
@@ -378,11 +378,11 @@ $contador_del_nro_de_factura = $contador_del_nro_de_factura +1;
                                                                             var id_cliente = "<?php echo $id_cliente_facturacion;?>";
                                                                             var fecha_ingreso = "<?php echo $fecha_ingreso; ?>";
                                                                             var hora_ingreso = "<?php echo $hora_ingreso; ?>";
-                                                                            var cuviculo = "<?php echo $cuviculo; ?>";
+                                                                            var cubiculo = "<?php echo $cubiculo; ?>";
                                                                             var user_sesion = "<?php echo $user_sesion; ?>";
 
                                                                             var url_4 = 'facturacion/controller_registrar_factura.php';
-                                                                            $.get(url_4,{id_informacion:id_informacion,nro_factura:nro_factura,id_cliente:id_cliente,fecha_ingreso:fecha_ingreso,hora_ingreso:hora_ingreso,cuviculo:cuviculo,user_sesion:user_sesion},function (datos) {
+                                                                            $.get(url_4,{id_informacion:id_informacion,nro_factura:nro_factura,id_cliente:id_cliente,fecha_ingreso:fecha_ingreso,hora_ingreso:hora_ingreso,cubiculo:cubiculo,user_sesion:user_sesion},function (datos) {
                                                                                 $('#respuesta_factura<?php echo $id_map;?>').html(datos);
                                                                             });
 
@@ -411,7 +411,7 @@ $contador_del_nro_de_factura = $contador_del_nro_de_factura +1;
 
                                                     <?php
 
-                                                    $query_datos_cliente = $pdo->prepare("SELECT * FROM tb_tickets WHERE cuviculo = '$nro_espacio' AND estado = '1' ");
+                                                    $query_datos_cliente = $pdo->prepare("SELECT * FROM tb_tickets WHERE cubiculo = '$nro_espacio' AND estado = '1' ");
                                                     $query_datos_cliente->execute();
                                                     $datos_clientes = $query_datos_cliente->fetchAll(PDO::FETCH_ASSOC);
                                                     foreach($datos_clientes as $datos_cliente){
@@ -419,7 +419,7 @@ $contador_del_nro_de_factura = $contador_del_nro_de_factura +1;
                                                         $placa_auto = $datos_cliente['placa_auto'];
                                                         $nombre_cliente = $datos_cliente['nombre_cliente'];
                                                         $nit_ci = $datos_cliente['nit_ci'];
-                                                        $cuviculo = $datos_cliente['cuviculo'];
+                                                        $cubiculo = $datos_cliente['cubiculo'];
                                                         $fecha_ingreso = $datos_cliente['fecha_ingreso'];
                                                         $hora_ingreso = $datos_cliente['hora_ingreso'];
                                                         $user_sesion = $datos_cliente['user_sesion'];
@@ -475,21 +475,21 @@ $contador_del_nro_de_factura = $contador_del_nro_de_factura +1;
                                                                     <div class="form-group row">
                                                                         <label for="staticEmail" class="col-sm-4 col-form-label">Cuvículo:</label>
                                                                         <div class="col-sm-8">
-                                                                            <input type="text" class="form-control" value="<?php echo $cuviculo;?>" id="cuviculo<?php echo $id_map;?>" disabled>
+                                                                            <input type="text" class="form-control" value="<?php echo $cubiculo;?>" id="cubiculo<?php echo $id_map;?>" disabled>
                                                                         </div>
                                                                     </div>
 
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Salir</button>
-                                                                    <a href="tickets/controller_cancelar_ticket.php?id=<?php echo $id_ticket;?>&&cuviculo=<?php echo $cuviculo;?>" class="btn btn-danger">Cancelar</a>
+                                                                    <a href="tickets/controller_cancelar_ticket.php?id=<?php echo $id_ticket;?>&&cubiculo=<?php echo $cubiculo;?>" class="btn btn-danger">Cancelar</a>
                                                                     <a href="tickets/reimprimir_ticket.php?id=<?php echo $id_ticket;?>" class="btn btn-primary">Volver a Imprimir</a>
                                                                     <button type="button" class="btn btn-warning" id="btn_cambiar_ocupado<?php echo $id_map;?>">Cambiar a Ocupado</button>
                                                                     <script>
                                                                         $('#btn_cambiar_ocupado<?php echo $id_map;?>').click(function () {
-                                                                            var cuviculo = "<?php echo $cuviculo; ?>";
+                                                                            var cubiculo = "<?php echo $cubiculo; ?>";
                                                                             var url = 'parqueo/controller_cambiar_estado_ocupado.php';
-                                                                            $.get(url, {cuviculo: cuviculo}, function (datos) {
+                                                                            $.get(url, {cubiculo: cubiculo}, function (datos) {
                                                                                 // Actualizar la imagen y el texto asociados con el espacio de estacionamiento
                                                                                 // Aquí debes actualizar la imagen y el texto para indicar que el espacio está ocupado
                                                                                 $('#btn_ocupado<?php echo $id_map;?>').html('<img src="<?php echo $URL;?>/public/imagenes/auto1.png" width="60px" alt="">');
@@ -523,11 +523,11 @@ $contador_del_nro_de_factura = $contador_del_nro_de_factura +1;
                                                                             var id_cliente = "<?php echo $id_cliente_facturacion;?>";
                                                                             var fecha_ingreso = "<?php echo $fecha_ingreso; ?>";
                                                                             var hora_ingreso = "<?php echo $hora_ingreso; ?>";
-                                                                            var cuviculo = "<?php echo $cuviculo; ?>";
+                                                                            var cubiculo = "<?php echo $cubiculo; ?>";
                                                                             var user_sesion = "<?php echo $user_sesion; ?>";
 
                                                                             var url_4 = 'facturacion/controller_registrar_factura.php';
-                                                                            $.get(url_4,{id_informacion:id_informacion,nro_factura:nro_factura,id_cliente:id_cliente,fecha_ingreso:fecha_ingreso,hora_ingreso:hora_ingreso,cuviculo:cuviculo,user_sesion:user_sesion},function (datos) {
+                                                                            $.get(url_4,{id_informacion:id_informacion,nro_factura:nro_factura,id_cliente:id_cliente,fecha_ingreso:fecha_ingreso,hora_ingreso:hora_ingreso,cubiculo:cubiculo,user_sesion:user_sesion},function (datos) {
                                                                                 $('#respuesta_factura<?php echo $id_map;?>').html(datos);
                                                                             });
 

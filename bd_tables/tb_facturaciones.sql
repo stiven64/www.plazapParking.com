@@ -11,7 +11,7 @@ CREATE TABLE tb_facturaciones(
     fecha_salida             VARCHAR (255) NULL,
     hora_salida              VARCHAR (255) NULL,
     tiempo                   VARCHAR (255) NULL,
-    cuviculo                 VARCHAR (255) NULL,
+    cubiculo                 VARCHAR (255) NULL,
     detalle                  VARCHAR (255) NULL,
     precio                   VARCHAR (255) NULL,
     cantidad                 VARCHAR (255) NULL,
